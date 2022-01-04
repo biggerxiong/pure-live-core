@@ -106,6 +106,69 @@ link 直播间链接
 
 title 直播间标题
 
+### GetRoomInfos 批量获取直播间信息
+
+> **POST** /api/v1/live/room_infos/query
+
+**Query:**
+
+请求参数为包含以下内容的数组
+
+| 参数名 |              内容              |  示例   |
+| :----: | :----------------------------: |:-----:|
+|  plat  |             平台名             | douyu |
+|  room  | 直播间(短号、长号、完整号均可) | 8302  |
+
+请求示例：`/api/v1/live/room_infos/query`
+
+``` json
+[
+  {
+    "plat": "douyu",
+    "room": "8302"
+  },
+  {
+    "plat": "huya",
+    "room": "kaerlol"
+  }
+]
+```
+
+**Response:**
+
+```json
+{
+	"code": 0,
+	"msg": "ok",
+	"data": [
+		{
+			"status": 0,
+			"room": "8302",
+			"upper": "祈风1v9",
+			"link": "https://www.douyu.com/8302",
+			"title": "国服第一VN！一个打八百多个！"
+		},
+		{
+			"status": 1,
+			"room": "kaerlol",
+			"upper": "卡尔",
+			"link": "https://www.huya.com/kaerlol",
+			"title": "【无限火力】晕到~为止"
+		}
+	]
+}
+```
+
+status 开播情况 0:未开播 1:开播
+
+room 真实房间号
+
+upper 主播名
+
+link 直播间链接
+
+title 直播间标题
+
 ### GetPlayURL 获取直播流信息
 
 > GET /api/v1/live/play_url
