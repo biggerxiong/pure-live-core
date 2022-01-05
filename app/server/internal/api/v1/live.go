@@ -58,7 +58,7 @@ func GetRoomInfos(c *gin.Context) {
 		format.HTTP(c, ecode.InvalidParams, nil, nil)
 		return
 	}
-	defer zap.S().Infow("GetRoomInfos: ", "req", req)
+	zap.S().Infow("GetRoomInfos: ", "req", req)
 
 	var wg sync.WaitGroup
 	rsp := make([]*model.RoomInfo, 0, len(req))
